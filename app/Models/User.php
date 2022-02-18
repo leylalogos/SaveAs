@@ -42,5 +42,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Game::class, 'plays');
     }
-   
+    public function playes()
+    {
+        return $this->hasMany(Play::class);
+    }
+    public function getUserRankAttribute()
+    {
+        return $this->playes()->orderBy('score')->get();
+    }
 }
