@@ -23,8 +23,10 @@ class GameSeeder extends Seeder
             ['title' => 'Tekken'],
             ['title' => 'Dig Dug'],
         ];
-        foreach ($games as $game) {
-            Game::create($game);
+        if (Game::count() == 0) {
+            foreach ($games as $game) {
+                Game::create($game);
+            }
         }
     }
 }

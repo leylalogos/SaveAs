@@ -23,8 +23,10 @@ class PlaySeeder extends Seeder
             ['user_id' => 1, 'game_id' => 1, 'score' => 600],
             ['user_id' => 6, 'game_id' => 2, 'score' => 900],
         ];
-        foreach ($playes as $play) {
-            Play::create($play);
+        if (Play::count() == 0) {
+            foreach ($playes as $play) {
+                Play::create($play);
+            }
         }
     }
 }
